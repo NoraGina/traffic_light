@@ -4,13 +4,11 @@ let timer;
 let timerOut;
 
 
-//Functionality at night
-function night(){
-    const nightCircle = document.querySelector('#yellowCircle');
-    nightCircle.classList.toggle('yellow');   
-}
 
 function startNight(){
+    document.querySelector('#greenCircle').classList.remove('green');
+    document.querySelector('#yellowCircle').classList.remove('yellow');
+    document.querySelector('#redCircle').classList.remove('red');
     clearTimeout(timerOut);
     clearInterval(timer);  
    timer = setInterval(function(){
