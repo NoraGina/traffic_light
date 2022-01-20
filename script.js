@@ -11,6 +11,8 @@ function night(){
 }
 
 function startNight(){
+    clearTimeout(timerOut);
+    clearInterval(timer);  
    timer = setInterval(function(){
     const nightCircle = document.querySelector('#yellowCircle');
     nightCircle.classList.toggle('yellow');
@@ -18,14 +20,6 @@ function startNight(){
 }
 
 
-//Reset all timerOut and interval
- function resetAll(){
-    document.querySelector('#greenCircle').classList.remove('green');
-    document.querySelector('#redCircle').classList.remove('red');
-    document.querySelector('#yellowCircle').classList.remove('yellow');
-    clearTimeout(timerOut);
-    clearInterval(timer);  
- }
 
  //Functionality at day
 function startDay(){
@@ -34,6 +28,8 @@ function startDay(){
     document.querySelector('#yellowCircle').classList.remove('yellow');
     document.querySelector('#redCircle').classList.add('red');
     //set timeout  function for yellow
+    clearTimeout(timerOut);
+    clearInterval(timer);  
     timerOut= setTimeout(changeYellow, 3000);  
 }
 function changeYellow(){
@@ -41,6 +37,7 @@ function changeYellow(){
     document.querySelector('#redCircle').classList.remove('red');
     document.querySelector('#yellowCircle').classList.add('yellow');
     //set timeout function for green
+    clearTimeout(timerOut);
     timerOut= setTimeout(changeGreen, 1000);  
 }
 function changeGreen(){
@@ -48,6 +45,7 @@ function changeGreen(){
     document.querySelector('#yellowCircle').classList.remove('yellow');
     document.querySelector('#greenCircle').classList.add('green');
     //set timout function for yellow back
+    clearTimeout(timerOut);
     timerOut = setTimeout(yellowBack, 3000);   
 }
 function yellowBack(){
@@ -55,21 +53,21 @@ function yellowBack(){
     document.querySelector('#greenCircle').classList.remove('green');
     document.querySelector('#yellowCircle').classList.add('yellow');
     //set timout function for red
+    clearTimeout(timerOut);
     timerOut = setTimeout(startDay, 1000);
 }
 
 //Add event listner on day button
 const dayBtn = document.querySelector('#dayBtn');
-dayBtn.addEventListener('click', ()=>{
-    resetAll();
-    startDay();
+dayBtn.addEventListener('click',startDay);
+    
+    
    
-})
+
 //Add event listner on night day button
 const nightBtn = document.querySelector('#nightBtn');
-nightBtn.addEventListener('click', ()=>{
-    resetAll();
-    startNight();
+nightBtn.addEventListener('click', startNight); 
+  
+   
     
-    
-})
+
